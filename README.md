@@ -1,69 +1,68 @@
 # 🤖 Customer Support FAQ Chatbot (RAG)
 
-> A Retrieval-Augmented Generation (RAG) chatbot built with **LangChain**, **OpenAI**, **FAISS**, and **Hugging Face Datasets**.
-
 <p align="center">
-  <img src="customer_RAG.png" alt="RAG Architecture" width="100%">
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![LangChain](https://img.shields.io/badge/LangChain-Framework-green)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT--3.5-black)
+![FAISS](https://img.shields.io/badge/FAISS-Vector%20Database-orange)
+![License](https://img.shields.io/badge/License-MIT-red)
+
 </p>
 
-## 📖 Overview
+> A Retrieval-Augmented Generation (RAG) chatbot built with **LangChain**, **OpenAI**, **FAISS**, and **Hugging Face Datasets** to answer customer support questions using semantic search.
 
-This project demonstrates how to build a conversational Customer Support assistant using a Retrieval-Augmented Generation (RAG) pipeline.
+---
 
-Instead of relying only on an LLM's internal knowledge, the chatbot retrieves the most relevant FAQ documents from a vector database before generating an answer.
+# 📖 Overview
 
-## ✨ Features
+This project demonstrates how to build a conversational AI assistant powered by the Retrieval-Augmented Generation (RAG) architecture.
 
-- FAQ dataset ingestion
-- Document preparation with LangChain
-- OpenAI embeddings
-- FAISS vector database
-- Semantic search (Retriever)
-- Conversational memory
-- GPT-3.5 Turbo response generation
+Instead of relying only on the knowledge stored inside the language model, the chatbot first retrieves the most relevant FAQ documents from a vector database before generating a final response.
 
-## 🏗️ Architecture
+This significantly improves answer accuracy while reducing hallucinations.
 
-```text
-Dataset
-   │
-   ▼
-Load Dataset
-   │
-   ▼
-LangChain Documents
-   │
-   ▼
-OpenAI Embeddings
-   │
-   ▼
-FAISS Vector Store
-   │
-   ▼
-Retriever (Top-K)
-   │
-   ▼
-GPT-3.5 Turbo
-   │
-   ▼
-Final Answer
-```
+---
 
-The included image (`customer_RAG.png`) summarizes the complete pipeline.
+# 🏗️ Architecture
 
-## 📂 Project Structure
+<p align="center">
+<img src="customer_RAG.png" alt="Customer Support RAG Architecture" width="90%">
+</p>
+
+The architecture above illustrates the complete RAG pipeline implemented in this project.
+
+---
+
+# ✨ Features
+
+- Load FAQ dataset from Hugging Face
+- Convert data into LangChain Documents
+- Generate semantic embeddings using OpenAI
+- Store embeddings in FAISS
+- Perform semantic similarity search
+- Retrieve the Top-K relevant documents
+- Generate contextual responses using GPT-3.5 Turbo
+- Maintain conversation history
+
+---
+
+# 📂 Project Structure
 
 ```text
 RAG_customer_support/
-│── customer_RAG.png
-│── chatbot.py
-│── vector_db/
-│── .env
-│── requirements.txt
+│
+├── customer_RAG.png
+├── cust_supp.py
+├── vector_db/
+├── .env
+├── requirements.txt
 └── README.md
 ```
 
-## ⚙️ Technologies
+---
+
+# ⚙️ Technologies
 
 - Python
 - LangChain
@@ -72,67 +71,137 @@ RAG_customer_support/
 - Hugging Face Datasets
 - python-dotenv
 
-## 🚀 Installation
+---
+
+# 📊 Pipeline
+
+```text
+HuggingFace Dataset
+        │
+        ▼
+Document Preparation
+        │
+        ▼
+OpenAI Embeddings
+        │
+        ▼
+FAISS Vector Database
+        │
+        ▼
+Retriever (Top-K)
+        │
+        ▼
+GPT-3.5 Turbo
+        │
+        ▼
+Answer Generation
+```
+
+---
+
+# 🚀 Installation
+
+Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/your_username/RAG_customer_support.git
 cd RAG_customer_support
+```
 
-python -m venv .venv
+Create a virtual environment
 
-# Windows
-.venv\Scripts\activate
+```bash
+python -m venv venv
+```
 
+Activate it
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file:
+---
 
-```text
-OPENAI_API_KEY=your_api_key
+# 🔑 Environment Variables
+
+Create a `.env` file in the project root.
+
+```env
+OPENAI_API_KEY=your_openai_api_key
 ```
 
-## ▶️ Usage
+---
+
+# ▶️ Run the Project
 
 ```bash
-python chatbot.py
+python cust_supp.py
 ```
 
-Example:
+---
+
+# 💬 Example
 
 ```text
-You: how can i pay?
-Bot: You can pay using...
+You : How can I pay?
+
+Bot :
+You can pay using Visa, Mastercard, PayPal,
+or any other supported payment method.
 ```
 
-## 🔍 Pipeline Details
+---
+
+# 🧠 How it Works
 
 1. Load the FAQ dataset.
 2. Convert each FAQ into a LangChain `Document`.
 3. Generate embeddings using OpenAI.
-4. Store vectors inside FAISS.
-5. Retrieve the most relevant documents.
-6. Send retrieved context + user question to GPT-3.5 Turbo.
-7. Return a grounded response.
-8. Maintain conversation history.
+4. Store embeddings in FAISS.
+5. Retrieve the Top-K most relevant documents.
+6. Build the prompt with retrieved context.
+7. GPT-3.5 Turbo generates the answer.
+8. Store the conversation history for contextual interactions.
 
-## 🚧 Future Improvements
+---
 
-- Streamlit interface
-- FastAPI backend
-- Docker support
-- ChromaDB / Pinecone
-- Hybrid search
-- Reranking
-- Source citations
-- GPT-4.1 / GPT-5 support
+# 🚧 Future Improvements
 
-## 📄 License
+- Streamlit Web Interface
+- FastAPI REST API
+- Docker Support
+- ChromaDB Integration
+- Pinecone Integration
+- Hybrid Search
+- Re-ranking Models
+- Source Citation
+- GPT-4.1 / GPT-5 Support
+- Multi-user Sessions
 
-MIT License.
+---
 
-## 👤 Author
+# 📄 License
 
-Amine AIT ALI
+This project is released under the MIT License.
 
-If you found this repository useful, consider giving it a ⭐.
+---
+
+# 👨‍💻 Author
+
+**Amine AIT ALI**
+
+If you found this repository useful, please consider giving it a ⭐ on GitHub.
