@@ -60,6 +60,10 @@ RAG_customer_support/
 └── README.md
 ```
 
+<p align="center">
+<img src="FLOW.png" alt="FLOW" width="90%">
+</p>
+
 ---
 
 # ⚙️ Technologies
