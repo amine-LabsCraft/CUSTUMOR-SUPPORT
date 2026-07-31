@@ -23,6 +23,3 @@ __pycache__/
 
 # Windows
 Thumbs.db
-
-# FAISS vector database (optionnel)
-vector_db/
