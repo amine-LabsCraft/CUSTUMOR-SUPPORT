@@ -86,7 +86,7 @@ print("\n\n\n\n")
 # -------------------------------------------------------
 # Création de la chaîne conversationnelle
 
-from langchain.chains import ConversationalRetrievalChain
+from langchain_community.chains import ConversationalRetrievalChain
 
 chat_bot = ConversationalRetrievalChain.from_llm(llm, retriever)
 

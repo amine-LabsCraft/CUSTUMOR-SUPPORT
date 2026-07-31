@@ -1,15 +1,28 @@
-# environment
-.env
-.env
-.env.local
-.env.production
+# Virtual environment
+venv/
+.venv/
+env/
 
-# python
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
 
-# editor
+# Environment variables
+.env
+
+# VS Code
 .vscode/
 
-# vector database
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# FAISS vector database (optionnel)
 vector_db/
